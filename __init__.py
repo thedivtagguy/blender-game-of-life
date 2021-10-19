@@ -17,13 +17,21 @@ bl_info = {
     "description" : "",
     "blender" : (2, 80, 0),
     "version" : (0, 0, 1),
-    "location" : "",
+    "location" : "View3D",
     "warning" : "",
-    "category" : "Generic"
+    "category" : "Object"
 }
 
+import bpy
+from . gol_op import GOL_OT_Start
+from . gol_pnl import GOL_PT_Panel
+
+classes = (GOL_OT_Start, GOL_PT_Panel)
+
 def register():
-    ...
+    for c in classes:
+        bpy.utils.register_class(c)
 
 def unregister():
-    ...
+    for c in classes:
+        bpy.utils.unregister_class(c)
