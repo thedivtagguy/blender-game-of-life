@@ -64,11 +64,11 @@ class GOL_OT_Spawn(Operator):
     
     def execute(self, context):
         # Generate a 2D array 
-        grid = generate_grid(10)
+        grid = generate_grid(4)
 
         # Delete 20 random items from grid 
-        b = delete_random_item(grid, 50)
-        
+        b = delete_random_item(grid, 10)
+        print(b)
         # Add new object to grid locations
         for i in range(0,len(b)):
             bpy.ops.object.duplicate()

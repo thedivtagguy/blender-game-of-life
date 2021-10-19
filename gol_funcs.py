@@ -14,14 +14,17 @@ def even_seq(n):
 def generate_grid(a):
     x = a
     y = a
+    z = a
     grid = []
     numbers = even_seq(x)
     for i in range(0,x):
         b = numbers[i]
         for j in range(0,y):
             a = numbers[j]
-            new_loc = [a,b,0]
-            grid.append(new_loc)
+            for k in range(0,z):
+                c = numbers[k]
+                new_loc = [a,b,c]
+                grid.append(new_loc)
 
     return grid
 
