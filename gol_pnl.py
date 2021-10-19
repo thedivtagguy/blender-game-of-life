@@ -12,10 +12,13 @@ class GOL_PT_Panel(Panel):
         layout = self.layout
         scene = context.scene
         
+        layout.label(text="Procedural Generator")
+
         # 2 Columns with buttons
         row = layout.row()
         col = row.column()
         col.operator("gol.start", text="Start")
+        col.operator("gol.spawn", text="Fill Grid")
 
         col = row.column()
         col.operator("gol.stop", text="Stop")

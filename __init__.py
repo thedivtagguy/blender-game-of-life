@@ -24,9 +24,11 @@ bl_info = {
 
 import bpy
 from . gol_op import GOL_OT_Start
+from . gol_op import GOL_OT_Stop
+from . gol_op import GOL_OT_Spawn
 from . gol_pnl import GOL_PT_Panel
 
-classes = (GOL_OT_Start, GOL_PT_Panel)
+classes = (GOL_OT_Start, GOL_PT_Panel, GOL_OT_Stop, GOL_OT_Spawn)
 
 def register():
     for c in classes:
