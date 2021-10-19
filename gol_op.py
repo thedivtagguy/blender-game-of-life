@@ -67,13 +67,12 @@ class GOL_OT_Spawn(Operator):
         grid = generate_grid(10)
 
         # Delete 20 random items from grid 
-        for i in range(0,20):
-            b = delete_random_item(grid, 50)
+        b = delete_random_item(grid, 50)
         
         # Add new object to grid locations
-        for i in range(0, len(b)):
-                    bpy.ops.mesh.primitive_cube_add(location=(b[i][0],b[i][1],0))
-                
+        for i in range(0,len(b)):
+            bpy.ops.object.duplicate()
+            bpy.context.object.location =(b[i][0], b[i][1], b[i][2])               
 
         # Generate 
 

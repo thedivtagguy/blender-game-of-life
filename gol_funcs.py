@@ -1,4 +1,5 @@
 import random as random
+
 # Generate a sequence of even numbers
 def even_seq(n):
     grid = []
@@ -25,12 +26,10 @@ def generate_grid(a):
     return grid
 
 # function to delete random item from grid
-def delete_random_item(grid, x):
-    b = grid
-    a = len(b) -1
-    # Get random index
-    for x in range(0,x):
-        random_index = random.randint(0,(a-1))
-        # Delete item from grid
-        b.pop(random_index)
-    return b
+def delete_random_item(grid,x):
+    y = 0
+    while y < x:
+        z = random.randint(0,len(grid)-1)
+        grid.pop(z)
+        y += 1
+    return grid
