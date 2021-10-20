@@ -47,10 +47,12 @@ class GOL_OT_Stop(Operator):
         # Delete all selected objects
         bpy.ops.object.delete()
 
+
 class GOL_OT_Spawn(Operator):
     bl_idname = "gol.spawn"
     bl_label = "Fill Grid"
     bl_description = "Fill Grid with Objects"
+
 
     @classmethod
     def poll(cls, context):
@@ -63,16 +65,41 @@ class GOL_OT_Spawn(Operator):
         return False
     
     def execute(self, context):
-        # Generate a 2D array 
-        grid = generate_grid(4)
 
+        # Get active object
+        active_obj = context.view_layer.objects.active
+
+        grid_cubes = get_dimensions(active_obj)
+
+        # Generate a 2D array 
+        grid = generate_grid(grid_cubes)
+
+        num_items = len(grid) - random.randint(1, len(grid))
         # Delete 20 random items from grid 
-        b = delete_random_item(grid, 10)
-        print(b)
+        b = delete_random_item(grid, num_items)
+
+        # Get active object
+        cur = context.view_layer.objects.active
+        # Create a copy of cur
+        cur_copy = cur.copy()
+
+        # Add wireframe modifier to cur
+        cur.modifiers.new(name="wire", type="WIREFRAME")
+
+      
+        # Delete cur
+        # abpy.ops.object.delete()
+        # Add cur_copy to scene
+        bpy.context.scene.collection.objects.link(cur_copy)
+        # Resize cur to (1,1,1)
+        cur_copy.scale = (1,1,1)
+        # Set cur_copy as active
+        bpy.context.view_layer.objects.active = cur_copy
+
+
         # Add new object to grid locations
         for i in range(0,len(b)):
             bpy.ops.object.duplicate()
-            bpy.context.object.location =(b[i][0], b[i][1], b[i][2])               
-
-        # Generate 
-
+            bpy.context.object.location =(b[i][0], b[i][1], b[i][2])  
+            
+            # Add object to collect

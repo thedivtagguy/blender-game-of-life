@@ -18,7 +18,6 @@ class GOL_PT_Panel(Panel):
         row = layout.row()
         col = row.column()
         col.operator("gol.start", text="Start")
-        col.operator("gol.spawn", text="Fill Grid")
-
+        col.operator("gol.spawn", text="Fill")
         col = row.column()
         col.operator("gol.stop", text="Stop")
