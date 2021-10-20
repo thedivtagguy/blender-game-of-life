@@ -7,7 +7,7 @@ This addon allows you to create procedural 3D [Conway's Game of Life](https://en
 ## 3D GoL in Blender, Creating Procedural Structures
 
 - [x] ~~Create a 10x10 grid and select random 1x1 units and spawn cubes there.~~
-- [ ] ~~Figuring out how to read and interpret user defined bounds and generate N number of cubes within that area.~~ 
+- [x] ~~Figuring out how to read and interpret user defined bounds and generate N number of cubes within that area.~~ 
 - [x] ~~Figure out how to read locations of cubes and generate new cubes based on some relative distance to them.~~
 - [x] ~~Make these generations of cubes not overlap and snap to each other, vertically or horizontally. Randomize direction.~~
 - [ ] Make the above customizable by asking the user the number of generations they'd like.
