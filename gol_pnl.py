@@ -12,12 +12,21 @@ class GOL_PT_Panel(Panel):
         layout = self.layout
         scene = context.scene
         
-        layout.label(text="Procedural Generator")
-
+        # Heading
+        layout.label(text="Procedural Generator", icon='MESH_CUBE')
         # 2 Columns with buttons
         row = layout.row()
         col = row.column()
-        col.operator("gol.start", text="Start")
+        # Seperator
+        col.separator()
+        # Description text
+        col.label(text="1. Turn on seeding mode")
+        col.operator("gol.seeder", text="Seeder")
+        col.separator()
+        col.label(text="2. Generate the Grid")
         col.operator("gol.spawn", text="Fill")
+        row = layout.row()
         col = row.column()
-        col.operator("gol.stop", text="Stop")
+        col.separator()
+        col.label(text="Add Scene Camera", icon="CAMERA_DATA")
+        col.operator("gol.camera", text="Add Camera")
