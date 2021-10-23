@@ -19,9 +19,13 @@ def neighbor(grid, x,y,z):
     for i in range(-1,2):
         for j in range(-1,2):
             for k in range(-1,2):
-                if (x+i,y+j,z+k) in grid:
-                    if grid[(x+i,y+j,z+k)] == True:
-                        count += 1
+                    try:
+                        if grid[x+i][y+j][z+k] == True:
+                            count += 1
+                    except:
+                        pass
+    if grid[x][y][z] == True:
+        count -= 1
     return count
 
 def next_state(previous):
@@ -39,10 +43,7 @@ def next_state(previous):
                     else:
                         next[i][j][k] = True
                 else:
-                    if N == 3:
-                        next[i][j][k] = True
-                    else:
-                        next[i][j][k] = False
+                    next[i][j][k] = True
     return next
 
 
@@ -75,8 +76,8 @@ def count_live_items(grid):
 
 grid = create_grid(3)
 grid = random_grid(grid)
-neighbor(grid,1,2,0)
+print(grid)
+# neighbor(grid,1,2,0)
 grid = iterations(grid,2)
-
-
+print(grid)
 count_live_items(grid)
