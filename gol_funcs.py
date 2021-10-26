@@ -1,5 +1,5 @@
 import random as random
-
+import mathutils
 # Generate a sequence of even numbers
 def even_seq(n):
     grid = []
@@ -23,7 +23,7 @@ def generate_grid(a):
             a = numbers[j]
             for k in range(0,z):
                 c = numbers[k]
-                new_loc = [a,b,c]
+                new_loc = [a,b,c, True]
                 grid.append(new_loc)
 
     return grid
@@ -33,6 +33,9 @@ def delete_random_item(grid,x):
     y = 0
     while y < x:
         z = random.randint(0,len(grid)-1)
+        # Make z index location False
+        grid[z][3] = False
+        # Pop item
         grid.pop(z)
         y += 1
     return grid
@@ -55,3 +58,10 @@ def get_dimensions(obj):
     cube_root = round(num_cubes**(1/3))
 
     return cube_root
+
+def update_camera(camera, focus_point=mathutils.Vector((0.0, 0.0, 0.0)), distance=10.0):
+    looking_direction = camera.location - focus_point
+    rot_quat = looking_direction.to_track_quat('Z', 'Y')
+    camera.rotation_euler = rot_quat.to_euler()
+    camera.location = rot_quat @ mathutils.Vector((0.0, 0.0, distance))
+
